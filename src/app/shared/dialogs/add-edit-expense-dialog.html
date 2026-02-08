@@ -1,0 +1,39 @@
+<h2 mat-dialog-title class="primary dialog-title">
+  {{ isEdit ? 'Update Expense' : 'Add Expense' }}
+</h2>
+
+<form [formGroup]="expenseForm" mat-dialog-content class="dialog-content">
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="category">
+      <mat-option value="Food">{{expenseCategory.Food}}</mat-option>
+      <mat-option value="Travel">{{expenseCategory.Travel}}</mat-option>
+      <mat-option value="Stay">{{expenseCategory.Stay}}</mat-option>
+    </mat-select>
+
+    @if (expenseForm.get('category')?.touched && expenseForm.get('category')?.hasError('required')) {
+         <mat-error>Category is required.</mat-error>
+    }
+   
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Amount</mat-label>
+    <input matInput type="number" formControlName="amount">
+
+    @if(expenseForm.get('amount')?.touched && expenseForm.get('amount')?.hasError('required')) {
+         <mat-error>Amount is required.</mat-error>
+    }
+    @if(expenseForm.get('amount')?.touched && expenseForm.get('amount')?.hasError('min')) {
+         <mat-error>Amount must be greater than 0.</mat-error>
+    }
+  </mat-form-field>
+</form>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="expenseForm.invalid">
+    {{ isEdit ? 'Update' : 'Add' }}
+  </button>
+</mat-dialog-actions>

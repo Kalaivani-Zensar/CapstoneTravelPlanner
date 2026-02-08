@@ -12,24 +12,36 @@ export class TripService {
     destination: 'Gokarna',
     startDate: new Date('2025-07-20'),
     endDate: new Date('2025-07-25'),
+    budgetAmount: 3000,
+    itinerary: [],
+    expenses: [],
   },
   {
     id: 2,
     destination: 'Ooty',
     startDate: new Date('2025-10-11'),
     endDate: new Date('2025-10-13'),
+    budgetAmount: 5000,
+    itinerary: [],
+    expenses: [], 
   },
   {
     id: 3,
     destination: 'Coorg',
     startDate: new Date('2025-12-01'),
-    endDate: new Date('2025-12-06'),
+    endDate: new Date('2025-12-06'),    
+    budgetAmount: 8000,
+    itinerary: [],
+    expenses: [],
   },
   {
     id: 4,
     destination: 'Vietnam',
     startDate: new Date('2025-12-20'),
     endDate: new Date('2025-12-30'),
+    budgetAmount: 50000,
+    itinerary: [],
+    expenses: [],
   }];
 
   private tripSubject: BehaviorSubject<Trip[]> = new BehaviorSubject<Trip[]>(this.mockTrips);

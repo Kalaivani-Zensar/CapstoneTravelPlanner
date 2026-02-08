@@ -70,6 +70,15 @@ export class ExpenseService {
     }
   }
 
+  updateExpense(updatedExpense: Expense) {
+    const expenses = this.expensesSubject.value;
+    const index = expenses.findIndex(e => e.id === updatedExpense.id);
+    if (index !== -1) {
+      expenses[index] = updatedExpense;
+      this.expensesSubject.next([...expenses]);
+    }
+  }
+  
   removeExpense(id: number) {
     const expenses = this.expensesSubject.value;
     const updatedExpenses = expenses.filter(e => e.id !== id);

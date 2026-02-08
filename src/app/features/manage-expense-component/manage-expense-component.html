@@ -1,0 +1,93 @@
+<div class="page-container">
+
+  <!-- Trip Header -->
+  <div class="trip-header">
+    <h2>{{ tripDetails?.destination }}</h2>
+    <p class="dates">
+      {{ tripDetails?.startDate | date }} – {{ tripDetails?.endDate | date }}
+    </p>
+  </div>
+
+  <!-- Summary Strip -->
+  <mat-card class="summary-strip">
+    <div class="summary-item">
+      <span class="label">Budget</span>
+      <span class="value">₹{{ tripDetails?.budgetAmount }}</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="summary-item">
+      <span class="label">Spent</span>
+      <span class="value">₹{{ totalExpense }}</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="summary-item">
+      <span class="label">Remaining</span>
+      <span
+        class="value"
+        [class.over-budget]="remainingBudget < 0">
+        ₹{{ remainingBudget }}
+      </span>
+    </div>
+  </mat-card>
+
+  <!-- Expense Breakdown -->
+  <mat-card class="chart-card">
+    <h3>Expense Breakdown</h3>
+
+    @if (tripExpenses.length === 0) {
+      <p class="empty-text">No expenses added yet</p>
+    } @else {
+      <div class="chart-wrapper">
+        <canvas
+          baseChart
+          [type]="chartType"
+          [data]="pieChartData"
+          [options]="chartOptions">
+        </canvas>
+      </div>
+    }
+  </mat-card>
+
+  <!-- Expenses List -->
+  <mat-card class="expenses-card">
+    <div class="expenses-header">
+    <span class="header-spacer"></span>
+
+    <h3 class="expenses-title">Expenses</h3>
+
+    <button mat-raised-button color="primary" (click)="openAddExpense()"> + Add Expense </button>
+    </div>
+
+
+    @if (tripExpenses.length === 0) {
+      <p class="empty-text">No expenses to show</p>
+    } @else {
+      @for (expense of tripExpenses; track expense.id) {
+        <div class="expense-row">
+          <span class="category">
+            {{ expense.category | titlecase }}
+          </span>
+
+          <span class="amount">
+            ₹{{ expense.amount }}
+          </span>
+
+          <span class="actions">
+            <button mat-icon-button color="primary" (click)="openEditExpense(expense)">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn" (click)="deleteExpense(expense.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </span>
+        </div>
+      }
+    }
+  </mat-card>
+
+</div>

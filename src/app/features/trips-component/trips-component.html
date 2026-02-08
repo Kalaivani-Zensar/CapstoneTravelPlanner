@@ -1,0 +1,19 @@
+<div class="trips-header">
+  <h2 class="title" color="primary">My Trips</h2>
+</div>
+<div class="card-container">
+  @for (trip of trips; track trip.id) {
+    <mat-card class="card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title color="primary">{{trip.destination}}</mat-card-title>
+      <mat-card-subtitle>{{trip.startDate | date}} - {{trip.endDate | date}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://static.india.com/wp-content/uploads/2022/12/travel-trends.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-actions>
+      <button matButton color="primary" (click)="manageExpense(trip.id)">Manage Expense</button>
+      <button matButton color="primary" (click)="viewItinerary(trip.id)">View Itinerary</button>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>
+

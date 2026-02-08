@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.form-card {
+  width: 600px;
+  padding: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.date-row {
+  display: flex;
+  gap: 16px;
+}
+
+.itinerary-section {
+  margin-top: 16px;
+}
+
+.day-card {
+  margin-bottom: 12px;
+}
+
+.btn {
+  margin-top: 16px;
+  margin-right: 10px;
+}
+
+.currencyPrefix {
+  margin-left: 5px;
+}

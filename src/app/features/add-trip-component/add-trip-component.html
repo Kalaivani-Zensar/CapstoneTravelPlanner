@@ -1,0 +1,82 @@
+<div class="container">
+  <mat-card class="form-card">
+    <h2>Add New Trip</h2>
+
+    <form [formGroup]="tripForm">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Destination</mat-label>
+        <input matInput formControlName="destination">
+
+        @if(tripForm.get('destination')?.touched && tripForm.get('destination')?.hasError('required')) {
+          <mat-error>Destination is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Budget Amount</mat-label>
+        <input matInput formControlName="budgetAmount" type="number">
+        <span matPrefix class="currencyPrefix">₹&nbsp;</span>
+
+        @if(tripForm.get('budgetAmount')?.touched && tripForm.get('budgetAmount')?.hasError('required')) {
+          <mat-error>Budget Amount is required</mat-error>
+        }
+
+        @if(tripForm.get('budgetAmount')?.touched && tripForm.get('budgetAmount')?.hasError('min')) {
+          <mat-error>Budget Amount must be greater than 0</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="date-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+
+          @if(tripForm.get('startDate')?.touched && tripForm.get('startDate')?.hasError('required')) {
+            <mat-error>Start date is required</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>End Date</mat-label>
+          <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+
+          @if(tripForm.get('endDate')?.touched && tripForm.get('endDate')?.hasError('required')) {
+            <mat-error>End date is required</mat-error>
+          }
+
+         @if (tripForm.get('endDate')?.touched && tripForm.hasError('invalidDateRange')) {
+          <mat-error>End date cannot be before start date</mat-error>
+         }
+        </mat-form-field>
+      </div>
+
+@if(showItinerary) {
+      <mat-divider></mat-divider>
+
+      <div formArrayName="itinerary" class="itinerary-section">
+        <h3>Itinerary</h3>
+
+        @for (day of itinerary.controls; track $index) {
+          <div [formGroupName]="$index" class="day-card">
+            <strong>{{ day.get('title')?.value }}</strong>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Activities</mat-label>
+              <textarea matInput rows="3" formControlName="activities">
+              </textarea>
+            </mat-form-field>
+          </div>
+        }
+      </div>
+    }
+      <button mat-raised-button color="primary" class="btn" (click)="addTrip()" [disabled]="tripForm.invalid">
+        Add Trip
+      </button>
+       <button mat-raised-button class="btn" routerLink="/"> Cancel </button>
+    </form>
+  </mat-card>
+</div>
