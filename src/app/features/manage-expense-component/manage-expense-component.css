@@ -6,7 +6,17 @@
   gap: 20px;
 }
 
-/* Trip Header */
+.trip-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.trip-title-section {
+  display: flex;
+  flex-direction: column;
+}
+
 .trip-header h2 {
   margin: 0;
   font-size: 26px;

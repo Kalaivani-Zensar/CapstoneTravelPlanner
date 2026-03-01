@@ -1,1 +1,75 @@
-<p>dashboard-component works!</p>
+<div class="dashboard-container">
+
+  <!--Summary Cards -->
+  <div class="summary-cards">
+    <mat-card class="summary-item">
+      <h3>Total Budget</h3>
+      <p>₹ {{ totalBudget }}</p>
+    </mat-card>
+
+    <mat-card class="summary-item">
+      <h3>Total Spent</h3>
+      <p>₹ {{ totalSpent }}</p>
+    </mat-card>
+
+    <mat-card class="summary-item">
+      <h3>Overall Status</h3>
+      <p [class.over-budget]="overspendPercent > 0">
+        {{ overspendPercent > 0 ? (overspendPercent | number:'1.0-0') + '% Over Budget' 
+          : 'Within Budget 🎉' }}
+      </p>
+    </mat-card>
+  </div>
+
+  <!-- Top Two Charts Row -->
+  <div class="charts-row">
+
+    <mat-card class="chart-card">
+      <h3>Category wise Expenses</h3>
+
+      <p class="insight">
+        🔎 Most of your money is spent on 
+        <b>{{ highestCategory }}</b>.
+      </p>
+
+      <canvas baseChart
+        [data]="categoryExpenseChartData"
+        [options]="categoryExpenseChartOptions"
+        [type]="categoryExpenseChartType">
+      </canvas>
+    </mat-card>
+
+    <mat-card class="chart-card">
+      <h3>Trip wise Expenses</h3>
+
+       <p class="insight">
+        🔎 Your most expensive trip was 
+        <b>{{ highestExpenseTrip }}</b>.
+      </p>
+
+      <canvas baseChart
+        [data]="tripExpenseChartData"
+        [options]="tripExpenseChartOptions"
+        [type]="tripExpenseChartType">
+      </canvas>
+    </mat-card>
+
+  </div>
+
+  <!--Bottom Full Width Chart -->
+  <mat-card class="chart-card full-width">
+    <h3>Budget vs Actual</h3>
+
+     <p class="insight">
+      🔎 You exceeded budget in 
+      <b>{{ overSpentTripCount }}</b> trip(s).
+    </p>
+
+    <canvas baseChart
+      [data]="budgetChartData"
+      [options]="budgetChartOptions"
+      [type]="budgetChartType">
+    </canvas>
+  </mat-card>
+
+</div>

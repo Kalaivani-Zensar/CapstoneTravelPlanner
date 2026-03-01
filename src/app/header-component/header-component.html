@@ -1,8 +1,8 @@
 <mat-toolbar class="toolbar">
-  <img src="/images/app-logo.png" class="logo">
+  <img src="/images/app-logo.png" class="logo" (click)="navigateHome()">
   <span class="spacer"></span>
+  <a mat-button routerLink="/dashboard">Dashboard</a>
   <a mat-button routerLink="/">My Trips</a>
   <a mat-button routerLink="/add-trip">New Trip</a>
-  <a mat-button routerLink="/dashboard">Dashboard</a>
 </mat-toolbar>
 

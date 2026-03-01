@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header-component',
@@ -11,4 +11,11 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
+  constructor(private router: Router) {
+
+  }
+
+  navigateHome() {
+    this.router.navigate(['/']);
+  }
 }

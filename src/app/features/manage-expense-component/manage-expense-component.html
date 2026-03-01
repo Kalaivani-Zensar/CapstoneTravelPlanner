@@ -2,11 +2,15 @@
 
   <!-- Trip Header -->
   <div class="trip-header">
+  <app-back-button></app-back-button>
+
+  <div class="trip-title-section">
     <h2>{{ tripDetails?.destination }}</h2>
     <p class="dates">
       {{ tripDetails?.startDate | date }} – {{ tripDetails?.endDate | date }}
     </p>
   </div>
+</div>
 
   <!-- Summary Strip -->
   <mat-card class="summary-strip">

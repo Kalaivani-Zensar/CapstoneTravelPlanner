@@ -1,1 +1,31 @@
-<p>view-itinerary-component works!</p>
+<div class="container">
+  <div class="header">
+    <app-back-button></app-back-button>
+    <h2 class="title">{{ tripName }} Trip Itinerary</h2>
+    <button mat-icon-button color="primary" class="edit-btn" (click)="openEditTrip()">
+        <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+ 
+  @if(itineraryArray.length) {
+    <mat-accordion multi="true">
+        @for(itinerary of itineraryArray; track itinerary.id; let i = $index) {
+            <mat-expansion-panel expanded="{{ i === 0 }}">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ itinerary.title }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>{{ itinerary.activity || 'No activity planned' }}</p>
+            </mat-expansion-panel>  
+    }
+    </mat-accordion>
+  }
+  @else {
+    <p>No itinerary available for this trip. 
+        <a [routerLink]="['/edit-trip', tripId]">Click to Add Itinerary</a>
+    </p>
+    
+  }
+
+</div>

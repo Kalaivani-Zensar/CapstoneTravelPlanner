@@ -1,0 +1,30 @@
+.container {
+  max-width: 800px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Remove border + outline */
+.edit-btn {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  cursor: pointer;
+}
+
+/* Remove focus outline */
+.edit-btn:focus {
+  outline: none;
+}

@@ -1,6 +1,9 @@
 <div class="container">
   <mat-card class="form-card">
-    <h2>Add New Trip</h2>
+    <div class="header">
+      <app-back-button></app-back-button>
+      <h3>{{ isEdit ? 'Update Trip Details' : 'Add New Trip' }}</h3>
+    </div>
 
     <form [formGroup]="tripForm">
 
@@ -66,16 +69,24 @@
             <strong>{{ day.get('title')?.value }}</strong>
             <mat-form-field appearance="outline" class="full-width">
               <mat-label>Activities</mat-label>
-              <textarea matInput rows="3" formControlName="activities">
+              <textarea matInput rows="3" formControlName="activity">
               </textarea>
             </mat-form-field>
           </div>
         }
       </div>
     }
+
+     @if (!isEdit) {
       <button mat-raised-button color="primary" class="btn" (click)="addTrip()" [disabled]="tripForm.invalid">
-        Add Trip
+        Add
       </button>
+    }
+     @else {
+      <button mat-raised-button color="primary" class="btn" (click)="updateTrip()" [disabled]="tripForm.invalid|| tripForm.pristine">
+        Update
+      </button>
+     }
        <button mat-raised-button class="btn" routerLink="/"> Cancel </button>
     </form>
   </mat-card>

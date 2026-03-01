@@ -8,7 +8,6 @@ export class Trip {
     endDate: Date;
     budgetAmount: number;
     itinerary: Itinerary[];
-    expenses: Expense[];
 
     constructor(id: number, destination: string, startDate: Date, endDate: Date, budgetAmount: number) {
         this.id = id;
@@ -17,6 +16,5 @@ export class Trip {
         this.endDate = endDate;
         this.budgetAmount = budgetAmount;   
         this.itinerary = [];
-        this.expenses = [];
     }
 }

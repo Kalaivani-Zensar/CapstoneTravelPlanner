@@ -6,23 +6,78 @@
   padding: 0 8px;
 }
 
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   margin: 10px;
   font-size: 24px;
   font-weight: 600;
 }
 
-button[mat-raised-button] {
-  height: 40px;
+mat-card-title {
+  font-size: 18px;
+}
+
+mat-card-subtitle {
+  font-size: 13px;
 }
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 
-.card {
-  max-width: 400px;
+.trip-card {
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
 }
+
+/* Header alignment */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-icons {
+  display: flex;
+  gap: 4px;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-btn {
+  margin-top: 4px;
+}
+
+/* Image refinement */
+.card-image {
+  height: 180px; 
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Buttons alignment */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px;
+}
+
+.card-actions button {
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
 

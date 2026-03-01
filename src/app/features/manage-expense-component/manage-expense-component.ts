@@ -8,7 +8,6 @@ import { DatePipe } from '@angular/common';
 import { BaseChartDirective  } from 'ng2-charts';
 import { ChartType } from 'chart.js';
 import { MatDialog } from '@angular/material/dialog';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,10 +15,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ExpenseCategory } from '../../shared/expense-category';
 import { TitleCasePipe } from '@angular/common';
 import { AddEditExpenseDialogComponent } from '../../shared/dialogs/add-edit-expense-dialog';
+import { BackButtonComponent } from '../../shared/back-button-component/back-button-component';
+import { ConfirmationDialog } from '../../shared/dialogs/confirmation-dialog/confirmation-dialog';
 
 @Component({
   selector: 'app-manage-expense-component',
-  imports: [DatePipe, TitleCasePipe, BaseChartDirective, MatCardModule, MatButtonModule, MatIconModule, MatDividerModule],
+  imports: [DatePipe, TitleCasePipe, BaseChartDirective, MatCardModule, MatButtonModule, 
+    MatIconModule, MatDividerModule, BackButtonComponent],
   templateUrl: './manage-expense-component.html',
   styleUrl: './manage-expense-component.css',
 })
@@ -86,7 +88,6 @@ export class ManageExpenseComponent implements OnInit {
       }
     ]};
 
-    console.log(this.pieChartData.datasets[0].data);
     this.totalExpense = this.tripExpenses.reduce((sum, e) => sum + e.amount, 0);
     this.remainingBudget = this.tripDetails?.budgetAmount ? this.tripDetails.budgetAmount - this.totalExpense : 0;
   }
@@ -107,8 +108,7 @@ export class ManageExpenseComponent implements OnInit {
   }
 
   openEditExpense(expense: Expense) {
-    console.log('Editing expense:', expense);
-  const dialogRef = this.dialog.open(AddEditExpenseDialogComponent, {
+   const dialogRef = this.dialog.open(AddEditExpenseDialogComponent, {
     width: '400px',
     data: expense
   });
@@ -123,7 +123,19 @@ export class ManageExpenseComponent implements OnInit {
  }
 
   deleteExpense(id: number) {
-    this.expenseService.removeExpense(id);
-    this.getExpensesForTrip();  
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      width: '350px',
+      data: {
+        title: 'Confirm Deletion',
+        message: 'Are you sure you want to delete this expense?'
+      }
+    }); 
+
+     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.expenseService.deleteExpense(id);
+        this.getExpensesForTrip();  
+      }
+    });
   }
 }

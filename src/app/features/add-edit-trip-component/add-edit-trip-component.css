@@ -4,6 +4,12 @@
   margin-top: 32px;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .form-card {
   width: 600px;
   padding: 16px;
