@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseChartDirective  } from 'ng2-charts';
 import { ChartType } from 'chart.js';
-import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { TripService } from '../../services/trip-service';
-import { ExpenseCategory } from '../../shared/expense-category';
+import { ExpenseCategory } from '../../models/expense-category-enum';
 import { Trip } from '../../models/trip';
 import { Expense } from '../../models/expense';
 import { ExpenseService } from '../../services/expense-service';

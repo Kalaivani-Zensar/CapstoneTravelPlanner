@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Trip } from '../models/trip';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { ExpenseCategory } from '../shared/expense-category';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -43,8 +42,8 @@ export class TripService {
   {
     id: 4,
     destination: 'Vietnam',
-    startDate: new Date('2025-12-20'),
-    endDate: new Date('2025-12-25'),
+    startDate: new Date('2025-12-04'),
+    endDate: new Date('2025-12-09'),
     budgetAmount: 50000,
     itinerary: [{ id: 1, tripId: 4, title: 'Day 1', activity: 'Explore Hanoi Old Quarter' },
                 { id: 2, tripId: 4, title: 'Day 2', activity: 'Visit to Halong Bay' },

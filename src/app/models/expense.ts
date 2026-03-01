@@ -1,4 +1,4 @@
-import { ExpenseCategory } from '../shared/expense-category';
+import { ExpenseCategory } from './expense-category-enum';
 
 export class Expense {
     id: number;

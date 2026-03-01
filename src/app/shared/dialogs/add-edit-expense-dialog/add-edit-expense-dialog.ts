@@ -1,14 +1,14 @@
 import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ExpenseCategory } from '../expense-category';
+import { ExpenseCategory } from '../../../models/expense-category-enum';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { Expense } from '../../models/expense';
+import { Expense } from '../../../models/expense';
 import { MatDialogActions } from '@angular/material/dialog';
 
 

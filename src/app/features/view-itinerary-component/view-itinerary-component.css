@@ -16,7 +16,6 @@
   font-weight: 600;
 }
 
-/* Remove border + outline */
 .edit-btn {
   border: none !important;
   box-shadow: none !important;
@@ -24,7 +23,6 @@
   cursor: pointer;
 }
 
-/* Remove focus outline */
 .edit-btn:focus {
   outline: none;
 }

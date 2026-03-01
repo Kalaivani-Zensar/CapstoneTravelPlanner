@@ -6,7 +6,6 @@
     </div>
 
     <form [formGroup]="tripForm">
-
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Destination</mat-label>
         <input matInput formControlName="destination">
@@ -60,7 +59,6 @@
 
 @if(showItinerary) {
       <mat-divider></mat-divider>
-
       <div formArrayName="itinerary" class="itinerary-section">
         <h3>Itinerary</h3>
 

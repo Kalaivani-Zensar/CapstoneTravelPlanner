@@ -12,9 +12,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { ExpenseCategory } from '../../shared/expense-category';
+import { ExpenseCategory } from '../../models/expense-category-enum';
 import { TitleCasePipe } from '@angular/common';
-import { AddEditExpenseDialogComponent } from '../../shared/dialogs/add-edit-expense-dialog';
+import { AddEditExpenseDialogComponent } from '../../shared/dialogs/add-edit-expense-dialog/add-edit-expense-dialog';
 import { BackButtonComponent } from '../../shared/back-button-component/back-button-component';
 import { ConfirmationDialog } from '../../shared/dialogs/confirmation-dialog/confirmation-dialog';
 
@@ -33,10 +33,7 @@ export class ManageExpenseComponent implements OnInit {
   chartType: ChartType = 'pie';
   chartOptions = {
     responsive: true,
-    maintainAspectRatio: false,
-    animation: {
-      duration: 500
-    }
+    maintainAspectRatio: false
   };
   pieChartData = {
     labels: [ExpenseCategory.Food, ExpenseCategory.Travel, ExpenseCategory.Stay],

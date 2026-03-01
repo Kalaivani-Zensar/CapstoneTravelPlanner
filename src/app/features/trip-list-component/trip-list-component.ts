@@ -13,12 +13,13 @@ import { ExpenseService } from '../../services/expense-service';
 
 
 @Component({
-  selector: 'app-trips-component',
+  selector: 'app-trip-list-component',
   imports: [CommonModule, MatCardModule, MatButtonModule, MatIcon, DatePipe],
-  templateUrl: './trips-component.html',
-  styleUrl: './trips-component.css',
+  templateUrl: './trip-list-component.html',
+  styleUrl: './trip-list-component.css',
 })
-export class TripsComponent implements OnInit {
+export class TripListComponent implements OnInit {
+  
   trips: Trip[] = [];
   
   constructor(private tripService: TripService, private expenseService: ExpenseService,

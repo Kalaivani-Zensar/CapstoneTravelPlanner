@@ -37,7 +37,6 @@ mat-card-subtitle {
   height: 100%;
 }
 
-/* Header alignment */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -58,14 +57,12 @@ mat-card-subtitle {
   margin-top: 4px;
 }
 
-/* Image refinement */
 .card-image {
   height: 180px; 
   width: 100%;
   object-fit: cover;
 }
 
-/* Buttons alignment */
 .card-actions {
   display: flex;
   justify-content: space-between;
@@ -79,5 +76,3 @@ mat-card-subtitle {
   border-radius: 6px;
   white-space: nowrap;
 }
-
-

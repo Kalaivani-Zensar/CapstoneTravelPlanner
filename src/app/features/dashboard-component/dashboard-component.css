@@ -4,7 +4,6 @@
   padding: 16px;
 }
 
-/* Summary Cards */
 .summary-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -27,7 +26,6 @@
   font-weight: bold;
 }
 
-/* Charts Row */
 .charts-row {
   display: flex;
   gap: 24px;
@@ -56,18 +54,15 @@
   margin-bottom: 12px;
 }
 
-/* Chart sizing */
 .chart-card canvas {
   flex: 1;
   max-height: 320px !important;
 }
 
-/* Bottom full-width chart */
 .full-width {
   width: 100%;
 }
 
-/* Chart size control */
 canvas {
   max-height: 350px !important;
 }

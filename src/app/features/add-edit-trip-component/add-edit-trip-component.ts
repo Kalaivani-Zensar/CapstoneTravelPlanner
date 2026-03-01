@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
-import { dateRangeValidator } from '../../custom-validators/date-range-validator';
+import { dateRangeValidator } from '../../validators/date-range-validator';
 import { ActivatedRoute } from '@angular/router';
 import { Trip } from '../../models/trip';
 import { BackButtonComponent } from '../../shared/back-button-component/back-button-component';
@@ -79,6 +79,26 @@ export class AddEditTripComponent implements OnInit {
     return start && end && end >= start;
  }
 
+ 
+  patchItinerary() {
+      const itineraryArray = this.itinerary;
+      itineraryArray.clear();
+
+      if (this.tripDetails?.itinerary.length) {
+        this.tripDetails?.itinerary.forEach((day: any) => {
+            itineraryArray.push(
+              this.formBuilder.group({
+                title: [day.title],
+                activity: [day.activity]
+              })
+            );
+        });
+    }
+    else {
+      this.generateItinerary();
+    }
+  }
+
   generateItinerary() {
     const start = new Date(this.tripForm.get('startDate')?.value);
     const end = new Date(this.tripForm.get('endDate')?.value);
@@ -119,26 +139,6 @@ export class AddEditTripComponent implements OnInit {
       }
     }
   }
-
-  patchItinerary() {
-      const itineraryArray = this.itinerary;
-      itineraryArray.clear();
-
-      if (this.tripDetails?.itinerary.length) {
-        this.tripDetails?.itinerary.forEach((day: any) => {
-            itineraryArray.push(
-              this.formBuilder.group({
-                title: [day.title],
-                activity: [day.activity]
-              })
-            );
-        });
-    }
-    else {
-      this.generateItinerary();
-    }
-  }
-
   
   addTrip() {
     const newTrip = this.tripForm?.value;
@@ -163,5 +163,5 @@ export class AddEditTripComponent implements OnInit {
           this.router.navigate(['/']);
         }
       });
-  }
+   }
 }

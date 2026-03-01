@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Expense } from '../models/expense';
-import { ExpenseCategory } from '../shared/expense-category';
+import { ExpenseCategory } from '../models/expense-category-enum';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
