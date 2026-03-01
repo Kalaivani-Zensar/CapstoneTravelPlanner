@@ -18,7 +18,7 @@
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Budget Amount</mat-label>
         <input matInput formControlName="budgetAmount" type="number">
-        <span matPrefix class="currencyPrefix">₹&nbsp;</span>
+        <span matPrefix class="currencyPrefix">₹</span>
 
         @if(tripForm.get('budgetAmount')?.touched && tripForm.get('budgetAmount')?.hasError('required')) {
           <mat-error>Budget Amount is required</mat-error>
